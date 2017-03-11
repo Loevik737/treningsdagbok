@@ -1,34 +1,36 @@
 package treningsdagbok;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-// Notice, do not import com.mysql.jdbc.*
-// or you will have problems!
 
-public class Main{
-    public static void main(String[] args) {
-        try {
-            // The newInstance() call is a work around for some
-            // broken Java implementations
+public class Main {
+	
+	private void sendStatement(Connection con)
+			    throws SQLException {
 
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-        } catch (Exception ex) {
-            // handle the error
-        	System.out.println(ex);
-        }
-        Connection conn = null;
-        try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/treningsdagbok?" +
-                                           "user=root&password=root");
+			    Statement stmt = null;
+			    String query = "INSERT INTO innendorsforhold" + "VALUES ('Bra', 200)";
+			    try {
+			        stmt = con.createStatement();
+			        stmt.executeUpdate(query);
+			    
+			    } catch (SQLException e ) {
+			        System.out.println(e);
+			    } finally {
+			        if (stmt != null) { 
+			        	stmt.close();
+			        }
+			    }
+			    
+			}
+	
+	public static void main(String[] args) throws SQLException {
+		Connect connection = new Connect();
+		Connection conn = connection.getConnection();
+		Main main = new Main();
+		main.sendStatement(conn);
+		
+	}
 
-            // Do something with the Connection
-
-        } catch (SQLException ex) {
-            // handle any errors
-            System.out.println("SQLException: " + ex.getMessage());
-            System.out.println("SQLState: " + ex.getSQLState());
-            System.out.println("VendorError: " + ex.getErrorCode());
-        }
-    }
 }
