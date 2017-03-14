@@ -9,8 +9,10 @@ public class Main {
 	public static void main(String[] args) throws SQLException {
 		Connect connection = new Connect();
 		Connection conn = connection.getConnection();
+		userfullOperations action = new userfullOperations();
+		action.utilityCall();
 		Treningsokt trening = new Treningsokt();
-		trening.newTreningsokt(conn,"2017-03-14 15:00:00","2017-03-14 15:00:00", "Notat","Name",7,1);
+		trening.newTreningsokt(conn,"2017-03-14 15:00:00","2017-03-14 15:00:00", "Notat","Name","7","1");
 		
 	}
 

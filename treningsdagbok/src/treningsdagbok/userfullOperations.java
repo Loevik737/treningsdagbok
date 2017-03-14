@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 public class userfullOperations {
 
-    public utilityCall(String keyword) throws SQLException {
+    public void utilityCall() throws SQLException {
         Connect connection = new Connect();
         Connection conn = connection.getConnection();
         boolean cont = true;
@@ -29,6 +29,10 @@ public class userfullOperations {
                 String template = data[6];
                 Treningsokt trening = new Treningsokt();
                 trening.newTreningsokt(conn, starttime, stoptime, notes, name, form, template);
+            }
+            else if (action.equals("stop")) {
+                cont = false;
+                regWorkOut.close();
             }
         }
     }

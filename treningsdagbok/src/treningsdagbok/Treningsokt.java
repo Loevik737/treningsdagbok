@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 public class Treningsokt {
 	
 
-	public void newTreningsokt(Connection con,String start, String end,String note, String name,Integer form, Integer mal){
+	public void newTreningsokt(Connection con,String start, String end,String note, String name,String form, String mal){
 		String query = "INSERT INTO treningsokt (Start, Slutt, Notat, Navn, Form, Mal)" +
 		    			   "VALUES (" + "'"+ start +"'"+ ", "+ "'"+ end + "'"+ ", "+ "'"+ note+ "'"+ ", "+ "'"+name+ "'"+ ", "+ "'"+form.toString()+ "'"+ ", "+ "'"+mal+ "'"+")";
 		SendController c = new SendController();
