@@ -1,12 +1,8 @@
 package treningsdagbok;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
 import java.util.Scanner;
-/**
- * Created by edvinj on 14.03.17.
- */
+
 public class userfullOperations {
 
     public void utilityCall() throws SQLException {

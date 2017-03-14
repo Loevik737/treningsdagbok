@@ -5,15 +5,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class GetQuery {
+public class GetController {
 	public void send(Connection con, String query) throws SQLException{
 		Statement stmt = null;
 		try {
 			stmt = con.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
 	        while (rs.next()) {
-				int prestasjon = rs.getInt("Prestasjon");
-				System.out.print(prestasjon);
+				int prestasjon = rs.getInt("Max(Prestasjon)");
+				System.out.println("The best result is: " + prestasjon);
 	        }
 		}
 		catch (SQLException e ) {
