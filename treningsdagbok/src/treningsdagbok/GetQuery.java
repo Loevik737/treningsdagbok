@@ -1,5 +1,5 @@
 package treningsdagbok;
 
-public class Main {
+public class GetQuery {
 
 }
