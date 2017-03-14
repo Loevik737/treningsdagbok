@@ -6,11 +6,11 @@ import java.sql.Statement;
 
 public class Main {
 	
-	private void sendStatement(Connection con)
+	private void sendStatement(Connection con, String que)
 			    throws SQLException {
 
 			    Statement stmt = null;
-			    String query = "INSERT INTO innendorsforhold" + "VALUES ('Bra', 200)";
+			    String query = que;
 			    try {
 			        stmt = con.createStatement();
 			        stmt.executeUpdate(query);
