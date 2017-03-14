@@ -4,7 +4,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Connection;
 
-public class SendQuery {
+public class SendController {
+	
 	public void send(Connection con, String query) throws SQLException {
 		Statement stmt = null;
 		try {

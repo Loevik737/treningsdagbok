@@ -11,7 +11,7 @@ public class Main {
 		Connect connection = new Connect();
 		Connection conn = connection.getConnection();
 		Treningsokt trening = new Treningsokt();
-		trening.newTreningsokt(conn,LocalDateTime.now(),LocalDateTime.now(), "Notat","Name",7,false);
+		trening.newTreningsokt(conn,"2017-03-14 15:00:00","2017-03-14 15:00:00", "Notat","Name",7,1);
 		
 	}
 
