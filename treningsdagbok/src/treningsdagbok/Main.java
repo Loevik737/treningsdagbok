@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 
 public class Main {
 	
-	
 	public static void main(String[] args) throws SQLException {
 		Connect connection = new Connect();
 		Connection conn = connection.getConnection();
