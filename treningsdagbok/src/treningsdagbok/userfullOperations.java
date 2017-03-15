@@ -1,12 +1,15 @@
 package treningsdagbok;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class userfullOperations {
 
     public void utilityCall() throws SQLException {
-        String[] allActions = {"new: Adds a new workout", "stop: Stops the program"};
+        String allActions = "List of all possible commands:" + '\n' + "new: Adds a new workout " + '\n' + "stop: Stops the program " +
+                '\n' + "results: returns your results " + '\n' + "best: returns your best result";
         Connect connection = new Connect();
         Connection conn = connection.getConnection();
         boolean cont = true;
@@ -31,11 +34,18 @@ public class userfullOperations {
                 cont = false;
                 regWorkOut.close();
             }
-            else if (action.equals("-help")) {
-                System.out.println("All availible actions: " + allActions);
+            else if (action.equals("help")) {
+                System.out.println(allActions);
+            }
+            else if (action.equals("best")) {
+                GetController result = new GetController();
+                result.send(conn, "SELECT MAX('Prestasjon') FROM treningsokt");
+                for (String i: result.send(conn, "SELECT MAX('Prestasjon') FROM treningsokt")) {
+                    System.out.println(i);
+                }
             }
             else {
-                System.out.println("Please enter a valid codeword, if you need help, type -help");
+                System.out.println("Please enter a valid input, if you need help, type -help");
             }
         }
     }

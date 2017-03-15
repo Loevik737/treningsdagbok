@@ -1,19 +1,24 @@
 package treningsdagbok;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class GetController {
-	public void send(Connection con, String query) throws SQLException{
+	public List<String> send(Connection con, String query) throws SQLException{
 		Statement stmt = null;
+		List<String> output = new ArrayList<>();
 		try {
 			stmt = con.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
-	        while (rs.next()) {
-				int prestasjon = rs.getInt("Max(Prestasjon)");
-				System.out.println("The best result is: " + prestasjon);
+
+			ResultSetMetaData metadata = rs.getMetaData();
+			int columnCount = metadata.getColumnCount();
+			while (rs.next()) {
+				for (int i = 1; i <= columnCount; i++) {
+					output.add(rs.getString(i));
+				}
 	        }
 		}
 		catch (SQLException e ) {
@@ -23,7 +28,7 @@ public class GetController {
 		finally {
 	        stmt.close();
 	        }
-		
-		
+
+		return output;
 	}
 }
