@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class userfullOperations {
 
     public void utilityCall() throws SQLException {
+        String[] allActions = {"new: Adds a new workout", "stop: Stops the program"};
         Connect connection = new Connect();
         Connection conn = connection.getConnection();
         boolean cont = true;
@@ -17,7 +18,7 @@ public class userfullOperations {
         while (cont) {
             System.out.println("Enter your action");
             String action = regWorkOut.nextLine();
-            if (action.equals("ny")) {
+            if (action.equals("new")) {
                 System.out.println("Enter your workout using this format: Date(YYYY.MM.DD); Startime(hh:mm:ss); Stoptime(hh:mm:ss); General notes; Name; Form; Template(0 , 1)");
                 String result = regWorkOut.nextLine();
                 String[] data = result.split(";");
@@ -33,6 +34,12 @@ public class userfullOperations {
             else if (action.equals("stop")) {
                 cont = false;
                 regWorkOut.close();
+            }
+            else if (action.equals("-help")) {
+                System.out.println("All availible actions: " + allActions);
+            }
+            else {
+                System.out.println("Please enter a valid codeword, if you need help, type -help");
             }
         }
     }
