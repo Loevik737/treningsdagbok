@@ -6,9 +6,9 @@ import java.util.List;
 
 
 public class GetController {
-	public List<String> send(Connection con, String query) throws SQLException{
+	public List<Integer> send(Connection con, String query) throws SQLException{
 		Statement stmt = null;
-		List<String> output = new ArrayList<>();
+		List<Integer> output = new ArrayList<>();
 		try {
 			stmt = con.createStatement();
 	        ResultSet rs = stmt.executeQuery(query);
@@ -17,7 +17,8 @@ public class GetController {
 			int columnCount = metadata.getColumnCount();
 			while (rs.next()) {
 				for (int i = 1; i <= columnCount; i++) {
-					output.add(rs.getString(i));
+					output.add(rs.getInt("Max(Prestasjon)"));
+					
 				}
 	        }
 		}

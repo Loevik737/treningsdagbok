@@ -39,8 +39,7 @@ public class userfullOperations {
             }
             else if (action.equals("best")) {
                 GetController result = new GetController();
-                result.send(conn, "SELECT MAX('Prestasjon') FROM treningsokt");
-                for (String i: result.send(conn, "SELECT MAX('Prestasjon') FROM treningsokt")) {
+                for (Integer i: result.send(conn, "SELECT MAX(Prestasjon) FROM resultat")) {
                     System.out.println(i);
                 }
             }
