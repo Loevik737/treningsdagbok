@@ -12,11 +12,11 @@ public class Resultat {
 			String HentBestResultat = "SELECT Max(Prestasjon) FROM resultat";
 			return HentBestResultat;
 		}
-		else if (command.equals("økter siste måned")){
-			String HentAntallØkter = "SELECT COUNT(ID) FROM TRENINGSOKT WHERE Start BETWEEN NOW() - interval 30 day and now()";
-			return HentAntallØkter;
+		else if (command.equals("ï¿½kter siste mï¿½ned")){
+			String HentAntallOkter = "SELECT COUNT(ID) FROM TRENINGSOKT WHERE Start BETWEEN NOW() - interval 30 day and now()";
+			return HentAntallOkter;
 		}
-		else if (command.equals("timer siste måned")){
+		else if (command.equals("timer siste mï¿½ned")){
 			//String sumStart = "SELECT SUM(Start) FROM TRENINGSOKT WHERE Start BETWEEN NOW() - interval 30 day and now()";
 			//String sumSlutt = "SELECT SUM(Slutt) FROM TRENINGSOKT WHERE Start BETWEEN NOW() - interval 30 day and now()";
 			//GetController get = new GetController();

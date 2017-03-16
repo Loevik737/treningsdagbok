@@ -9,7 +9,7 @@ public class userfullOperations {
 
     public void utilityCall() throws SQLException {
         String allActions = "List of all possible commands:" + '\n' + "new workout: Adds a new workout " + '\n' + "new result: Adds a new result "
-                + '\n' + "stop: Stops the program " + '\n' + "results: returns your results " + '\n' + "best: returns your best result";
+                + '\n' + "stop: Stops the program " + '\n'  + "best: returns your best result";
         Connect connection = new Connect();
         Connection conn = connection.getConnection();
         boolean cont = true;
@@ -54,8 +54,21 @@ public class userfullOperations {
                     System.out.println(i + " out of maximum 99.");
                 }
             }
+
+            else if (action.equals("new exercise")) {
+                System.out.println("Enter a new exercise using this format: Exercise name; Exercise description; Exercise difficulty; Exercise repetitions");
+                String exerInfo = regWorkOut.nextLine();
+                String[] exerDet = exerInfo.split(";");
+                String name = exerDet[0];
+                String description = exerDet[1];
+                String difficulty = exerDet[2];
+                String repetition = exerDet[3];
+
+                Treningsokt exercise = new Treningsokt();
+                exercise.newExercise(conn, name, description, difficulty, repetition);
+            }
             else {
-                System.out.println("Please enter a valid input, if you need help, type -help");
+                System.out.println("Please enter a valid input, if you need help, type help");
             }
         }
     }

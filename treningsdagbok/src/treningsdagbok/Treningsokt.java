@@ -52,5 +52,16 @@ public class Treningsokt {
 			e.printStackTrace();
 		}
 	}
+
+	public void newExercise(Connection con, String name, String description, String difficulty, String repetitions){
+		String query = "INSERT INTO ovelse (Navn, Beskrivelse, Belastning, Repetisjoner)" + "VALUES (" + "'"+name+"'" +", "+  "'"+description+ "'"+", "+ "'"+ difficulty +"'" +", "+ "'" + repetitions + "'" +")";;
+		SendController p = new SendController();
+
+		try {
+			p.send(con, query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }
