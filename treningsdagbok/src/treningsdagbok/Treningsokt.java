@@ -33,7 +33,7 @@ public class Treningsokt {
 	}
 
 	public void newIndoorCondition(Connection con, String air, String crowd, String workoutName){
-		String query = "INSERT INTO innendorsforhold (Luft, Tilskuere, treningsoktID)" + "VALUES (" + "'"+air+"'" +", "+  "'"+crowd+ "'"+", "+"'"+"(select treningsokt.ID from treningsokt where treningsokt.Navn = "+ workoutName +"'"+ ")";
+		String query = "INSERT INTO innendorsforhold (Luft, Tilskuere, treningsoktID)" + "VALUES (" + "'"+air+"'" +", "+  "'"+crowd+ "'"+", "+"(select ID from treningsokt where Navn ="+"'"+workoutName+"'"+"))";
 		SendController i = new SendController();
 		try {
 			i.send(con, query);
@@ -43,7 +43,7 @@ public class Treningsokt {
 	}
 
 	public void newOutoorCondition(Connection con, String weather, String temperature, String workoutName){
-		String query = "INSERT INTO utendorsforhold (Vaer, Temp, treningsoktID)" + "VALUES (" + "'"+weather+"'" +", "+  "'"+temperature+ "'"+", "+"'"+"(select treningsokt.ID from treningsokt where treningsokt.Navn = "+ workoutName +"'"+")";
+		String query = "INSERT INTO utendorsforhold (Vaer, Temp, treningsoktID)" + "VALUES (" + "'"+weather+"'" +", "+  "'"+temperature+ "'"+", "+"(select ID from treningsokt where Navn ="+"'"+workoutName+"'"+"))";
 		SendController o = new SendController();
 
 		try {

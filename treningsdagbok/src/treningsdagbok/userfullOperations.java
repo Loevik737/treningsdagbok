@@ -13,6 +13,7 @@ public class userfullOperations {
         Connect connection = new Connect();
         Connection conn = connection.getConnection();
         boolean cont = true;
+        Treningsokt trening = new Treningsokt();
         Scanner regWorkOut = new Scanner(System.in);
         while (cont) {
             System.out.println("Enter your action");
@@ -27,24 +28,17 @@ public class userfullOperations {
                 String name = data[4];
                 String form = data[5];
                 String template = data[6];
-                Treningsokt trening = new Treningsokt();
                 trening.newTreningsokt(conn, starttime, stoptime, notes, name, form, template);
-                System.out.println("Enter Achievement between 0 and 99;"  + "Description of result; Where you workout found place: (indoor/outdoor);"  + "If you selected indoor, then enter airquality; and crowd size;, if you selected outdoor, enter 'weather'; and 'temperature'; ");
+                System.out.println("Enter Where you workout found place: (indoor/outdoor);"  + "If you selected indoor, then enter airquality; and crowd size;, if you selected outdoor, enter 'weather'; and 'temperature'; ");
                 String info = regWorkOut.nextLine();
                 String[] followup = info.split(";");
-                String achievement = followup[0];
-                String description = followup[1];
-                String condition1 = followup[3];
-                String condition2 = followup[4];
-                Treningsokt resultat = new Treningsokt();
-                resultat.newResult(conn, achievement, description, name);
-                if (data[9].equals(" outdoor")) {
-                    Treningsokt outside = new Treningsokt();
-                    outside.newOutoorCondition(conn, condition1, condition2, name);
+                String condition1 = followup[1];
+                String condition2 = followup[2];
+                if (followup[0].equals("outdoor")) {  
+                    trening.newOutoorCondition(conn, condition1, condition2, name);
                 }
                 else {
-                    Treningsokt inside = new Treningsokt();
-                    inside.newIndoorCondition(conn, condition1, condition2, name);
+                    trening.newIndoorCondition(conn, condition1, condition2, name);
                 }
             }
             else if (action.equals("stop")) {
