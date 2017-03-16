@@ -48,10 +48,10 @@ public class userfullOperations {
             else if (action.equals("help")) {
                 System.out.println(allActions);
             }
-            else if (action.equals("best")) {
+            else if (action.equals("best styrke")) {
                 GetController result = new GetController();
-                for (Integer i: result.send(conn, "SELECT MAX(Prestasjon) FROM resultat")) {
-                    System.out.println(i + " out of maximum 99.");
+                for (String i: result.send(conn, "select max(intermediate.maxSum) as 'Prestasjon(Sum av ovelser )',intermediate.Dato, intermediate.Navn from (select sum(resultat.Prestasjon) as maxSum,treningsokt.Start as Dato,treningsokt.Navn as Navn from harovelse join (treningsokt,ovelse,resultat) on (harovelse.TreningsoktID = treningsokt.ID and harovelse.OvelseID = ovelse.ID and resultat.ovelseID = ovelse.ID) group by TreningsoktID having treningsokt.Start BETWEEN NOW() - interval 30 day and now()) intermediate")) {
+                    System.out.println(i);
                 }
             }
 
