@@ -61,8 +61,8 @@ public class userfullOperations {
                 String[] exerDet = exerInfo.split(";");
                 String name = exerDet[0];
                 String description = exerDet[1];
-                String difficulty = exerDet[0];
-                String repetition = exerDet[0];
+                String difficulty = exerDet[2];
+                String repetition = exerDet[3];
 
                 Treningsokt exercise = new Treningsokt();
                 exercise.newExercise(conn, name, description, difficulty, repetition);
